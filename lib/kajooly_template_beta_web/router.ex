@@ -11,20 +11,20 @@ defmodule KajoolyTemplateBetaWeb.Router do
   end
 
   page_assigns = %{
-    page_suffix: Application.get_env(:kajooly_template_alfa,:page_suffix) || "- Software & Startup Premium Landing Page Template",
-    page_lang: Application.get_env(:kajooly_template_alfa,:page_suffix) || :en,
-    mode:  Application.get_env(:kajooly_template_alfa, :mode) || "light",
-    width:  Application.get_env(:kajooly_template_alfa, :with) ||  "fluid",
-    menuPosition: Application.get_env(:kajooly_template_alfa, :menuPosition) || "fixed",
-    sidebar: Application.get_env(:kajooly_template_alfa, :sidebar) || %{color:  "light", size: "default", showuser: false},
-    topbar: Application.get_env(:kajooly_template_alfa, :topbar) || %{color: "dark"},
-    showRightSidebarOnPageLoad: Application.get_env(:kajooly_template_alfa, :showRightSidebarOnPageLoad ) || false,
-    layoutsFrom: Application.get_env(:kajooly_template_alfa, :layoutsFrom) || nil,
-    sidebar_html_path:  Application.get_env(:kajooly_template_alfa, :sidebar_html_path) || nil,
-    navbar_html_path: Application.get_env(:kajooly_template_alfa, :navbar_html_path) || nil,
-    favicon: Application.get_env(:kajooly_template_alfa, :favicon_path),
-    logo_dark: Application.get_env(:kajooly_template_alfa, :logo_dark_path),
-    logo_light: Application.get_env(:kajooly_template_alfa, :logo_light_path)
+    page_suffix: Application.get_env(:kajooly_template_beta,:page_suffix) || "- Software & Startup Premium Landing Page Template",
+    page_lang: Application.get_env(:kajooly_template_beta,:page_suffix) || :en,
+    mode:  Application.get_env(:kajooly_template_beta, :mode) || "light",
+    width:  Application.get_env(:kajooly_template_beta, :with) ||  "fluid",
+    menuPosition: Application.get_env(:kajooly_template_beta, :menuPosition) || "fixed",
+    sidebar: Application.get_env(:kajooly_template_beta, :sidebar) || %{color:  "light", size: "default", showuser: false},
+    topbar: Application.get_env(:kajooly_template_beta, :topbar) || %{color: "dark"},
+    showRightSidebarOnPageLoad: Application.get_env(:kajooly_template_beta, :showRightSidebarOnPageLoad ) || false,
+    layoutsFrom: Application.get_env(:kajooly_template_beta, :layoutsFrom) || nil,
+    sidebar_html_path:  Application.get_env(:kajooly_template_beta, :sidebar_html_path) || nil,
+    navbar_html_path: Application.get_env(:kajooly_template_beta, :navbar_html_path) || nil,
+    favicon: Application.get_env(:kajooly_template_beta, :favicon_path),
+    logo_dark: Application.get_env(:kajooly_template_beta, :logo_dark_path),
+    logo_light: Application.get_env(:kajooly_template_beta, :logo_light_path)
 
   }
 
