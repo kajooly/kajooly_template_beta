@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-xl-12">
+        <%#= link "Back", to: Routes.generic_index_path(@socket, :index), class: "btn btn-primary m-2" %>
+        <button class="btn btn-primary m-2"></button>
+        <div class="card">
+            <div class="card-body">
+                <p class="text-primary">#<%#= @node.node %> Node</p>
+                <h5 class="mb-1"><%#= @node.name %> Name</h5>
+                <p class="text-muted mb-1"><%#= @node.description %> Description</p>
+                <div class="text-muted">
+                     <div class="row">
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="d-flex align-items-start mt-3">
+                                <div class="me-2 align-self-center">
+                                    <i class="ri-hashtag h2 m-0 text-muted"></i>
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="mb-1">Node</p>
+                                    <h5 class="mt-0 text-truncate">
+                                        #<%#= @node.node %>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="d-flex align-items-start mt-3">
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="mb-1">Type</p>
+                                    <h5 class="mt-0 text-truncate">
+                                        <%#= @node.type%> Type
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="d-flex align-items-start mt-3">
+                                <div class="me-2 align-self-center">
+                                    <i class="ri-calendar-event-line h2 m-0 text-muted"></i>
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="mb-1">Notes</p>
+                                    <h5 class="mt-0 text-truncate">
+                                        <%#= @node.notes %> Notes
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <div class="mt-4">
+                    <div>
+                        <h6>Datos json:</h6>
+                        <p class="text-muted "><%#= Jason.encode!(@node.metadata) %> Data </p>
+                        
+                    </div>
+                    <div class="mt-4">
+                        <h6>Datos generales</h6>
+                        <div class="form-check mt-1">
+                            <label> Entorno: </label>
+                            <label class="form-check-label strikethrough">
+                            <%#= @node.env %> Desarrollo
+                            </label>
+                        </div>
+                        
+                        <!-- end sub tasks/checklists -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

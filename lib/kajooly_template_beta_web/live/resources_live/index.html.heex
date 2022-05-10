@@ -1,0 +1,70 @@
+
+<.breadcrum >
+  <%= @config[:txt_title] %>
+  <:page> <%= @page_title %> </:page>
+</.breadcrum>
+
+ <div class="row">
+  <div class="col-12 col-md-8 mx-auto">
+    <div class="row">
+      <div class="col px-0 px-md-2">
+        <div class="card">
+          <div class="card-body p-2">
+            <div class="row">
+              <div class="col-12 p-0 px-2">
+                <form class="d-flex">
+                  <input class="form-control me-2 flex-1" type="search" placeholder={@config[:txt_search]} aria-label={@config[:txt_search]}>
+                  <%= live_patch to: @config[:to_generals], class: "btn btn-outline-success flex-2" do %>
+                    <%= @config[:txt_add_rol] %> 
+                  <% end %> 
+                </form>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mx-auto p-3 mb-0 ">
+                <p class="fs-6 text-muted">
+                  <%=  @config[:txt_desc_index] %> 
+                </p>
+              </div>
+              <div class="col-12 mx-auto px-0">
+                <div class="card p-0">
+                  <div class="card-body p-0 px-1">
+                    <.list let={entry} list={@resources}>
+                      <.item_list_title_actions to={entry[:to]} data={entry}>
+                        <:title> <%= entry[:title] %> </:title>
+                        <:subtitle> 
+                          <.badges color={entry[:color]}>
+                            <.icons_person_circle width="12" height="12" class="me-1" /> 
+                            <%= entry[:subtitle] %> <%= @config[:txt_index_qty_users] %>
+                          </.badges> 
+                        </:subtitle>
+                        <:actions>
+                          <.dropdown class="float-end" class_button="btn-sm |float-end ms-1 border-0">
+                            <.icons_dots_vertical/>
+                            <:options to="#auto-asignacion">
+                              <%=  @config[:txt_index_actions_edit] %> 
+                            </:options>
+                            <:options to={ Routes.task_index_path(@socket, :assignments , %{ id: entry[:id] } )}>
+                             <%=  @config[:txt_index_actions_rol] %> 
+                            </:options>
+                            <:options to={ Routes.task_index_path(@socket, :assignments , %{ id: entry[:id] } )}>
+                             <%=  @config[:txt_index_actions_view_users] %> 
+                            </:options>
+                            <:options class="border-top"  to={ nil } disabled="true">
+                              <%=  @config[:txt_index_actions_remove] %> 
+                            </:options>
+                          </.dropdown>
+                        </:actions>
+                      </.item_list_title_actions>
+                    </.list>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end row -->

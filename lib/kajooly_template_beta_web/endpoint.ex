@@ -30,6 +30,11 @@ defmodule KajoolyTemplateBetaWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  plug Plug.Static,
+    at: "/",
+    from: :kajooly_template_beta,
+    gzip: false
+
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 

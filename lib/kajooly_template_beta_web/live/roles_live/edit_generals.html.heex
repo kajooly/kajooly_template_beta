@@ -1,0 +1,36 @@
+<.breadcrum to={@config[:to_index]} >
+  <%= @config[:txt_title] %>
+  <:page to="#"><%= @config[:txt_title_users] %></:page>
+  <:page><%= @config[:txt_page_title] %> </:page>
+</.breadcrum>
+<.tab_select class="col-12 col-md-8 mx-auto">   
+  <:tab to="/roles/edit/generals" selected="true">
+    <%= @config[:txt_tab_generals] %> 
+  </:tab>
+  <:tab to="/roles/edit/permissions" >
+    <%= @config[:txt_tab_permissions] %> 
+  </:tab>
+  <:tab to="/roles/edit/users" badge="12" badge_color="info" >
+    <%=  @config[:txt_tab_users] %> 
+  </:tab>
+</.tab_select>
+<div class="row">
+  <div class="col-12 col-md-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="mb-2">
+          <label for="rol_name" class="form-label">Nombre del Rol</label>
+          <input type="email" class="form-control" id="rol_name" aria-describedby="rol_name_help" />
+          <div id="rol_name_help" class="form-text">Min. 2 caracteres.</div>
+        </div>
+        <div class="mb-2">
+          <label for="rol_name" class="form-label">Color</label>
+          <input type="email" class="form-control" id="rol_name" value=" color_input();" />
+        </div>
+        <div class="mb-2">
+          <button type="button" class="btn btn-success float-end">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

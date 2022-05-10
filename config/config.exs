@@ -32,6 +32,25 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config(:kajooly_template_alfa,
+    page_suffix: " - Software & Startup Premium Landing Page Template",
+    page_lang: :en,
+    mode: "light",
+    width: "fluid",
+    menuPosition: "fixed",
+    sidebar: %{
+      color:  "light",
+      size: "default",
+    showuser: false},
+    topbar: %{color: "light"},
+    showRightSidebarOnPageLoad: false,
+    layoutsFrom: KajoolyAuthNWeb.LayoutView,
+    sidebar_html_path: nil,
+    navbar_html_path: nil,
+    favicon_path: nil,
+    logo_dark_path: nil,
+    logo_light_path: nil)
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

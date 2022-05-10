@@ -1,0 +1,139 @@
+<div class="left-side-menu">
+    <!-- LOGO -->
+    <div class="logo-box">
+        <%= unless is_nil(assigns.logo_dark) do %>
+            <a href="/" class="logo logo-dark text-center">
+                <span class="logo-lg">
+                    <img src={Routes.static_path(@conn, assigns.logo_dark)} alt="" height="22">
+                </span>
+            </a>
+        <% else %>
+             <a href="/" class="logo logo-dark text-center">
+                 <span class="logo-lg">
+                     <img src={Routes.static_path(@conn, "/assets/images/logo-dark.png")}  alt="" height="22">
+                 </span>
+             </a>
+         <% end %>
+         
+        <%= unless is_nil(assigns.logo_light) do %>
+             <a href="/" class="logo logo-light text-center">
+                 <span class="logo-lg">
+                     <img src={Routes.static_path(@conn, assigns.logo_light)} alt="" height="22">
+                 </span>
+             </a>
+         <% else %>
+             <a href="/" class="logo logo-light text-center">
+                 <span class="logo-lg">
+                     <img src="/assets/images/logo-light.png" alt="" height="22">
+                 </span>
+             </a>
+         <% end %>
+    </div>
+    <div class="h-100" data-simplebar>
+        <!-- User box -->
+        <div class="user-box text-center">
+            <img src={Routes.static_path(@conn, "/assets/images/users/avatar-1.jpg")} alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
+            <div class="dropdown">
+                <a href="#" class="text-reset dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown">Nik Patel</a>
+                <div class="dropdown-menu user-pro-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-user me-1"></i>
+                        <span>My Account</span>
+                    </a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-settings me-1"></i>
+                        <span>Settings</span>
+                    </a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-lock me-1"></i>
+                        <span>Lock Screen</span>
+                    </a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-log-out me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+            <p class="text-reset">Admin Head</p>
+        </div>
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <ul id="side-menu">
+                <li class="menu-title mt-2">Layouts</li>
+                <li>
+                    <a href="/contact-profiles">
+                        <i class="ri-profile-line"></i>
+                        <span> Profiles </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/apps-companies">
+                        <i class="ri-building-4-line"></i>
+                        <span> Companies </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/app-tickets">
+                        <i class="ri-customer-service-2-line"></i>
+                        <span> Tickets </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/tables-footables">
+                        <i class="ri-folders-line"></i>
+                        <span> Foo tables </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/generic">
+                        <i class="ri-profile-line"></i>
+                        <span> Generic </span>
+                    </a>
+                </li>
+               
+            </ul>
+             <ul id="side-menu">
+                <li class="menu-title mt-2">Navigation</li>
+                
+                <li>
+                    <a href="/portfolio">
+                        <i class="ri-profile-line"></i>
+                        <span> Portfolio </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/messages">
+                        <i class="ri-mail-line"></i>
+                        <span> Messages </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/messages_activity">
+                        <i class="ri-mail-send-fill"></i>
+                        <span> Messages activity </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/hooks">
+                        <i class="ri-focus-2-line"></i>
+                        <span> Hooks </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/hooks_endpoints">
+                        <i class="ri-focus-2-line"></i>
+                        <span> Hooks endpoints </span>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+        <!-- End Sidebar -->
+        <div class="clearfix"></div>
+    </div>
+    <!-- Sidebar -left -->
+</div>

@@ -1,0 +1,24 @@
+.bsk {
+    color: black;
+}
+
+.phx-modal-content {
+    background-color: #fefefe;
+    margin: 15vh auto;
+    padding: 2px 6px !important;
+    border: 1px solid #888;
+    width: 60%;
+    font-size: 100%;
+}
+
+@media screen and (max-width: 992px) {
+    .phx-modal-content {
+        width: 97% !important;
+    }
+}
+
+.alert-phx {
+    z-index: 99999;
+    margin-top: 5%;
+    min-width: 270px;
+}

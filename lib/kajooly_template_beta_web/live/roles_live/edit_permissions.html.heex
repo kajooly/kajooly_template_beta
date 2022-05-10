@@ -1,0 +1,42 @@
+<.breadcrum to={@config[:to_index]} >
+  <%= @config[:txt_title] %>
+  <:page to="#"><%= @config[:txt_title_users] %></:page>
+  <:page><%= @config[:txt_page_title] %> </:page>
+</.breadcrum>
+<.tab_select class="col-12 col-md-8 mx-auto">   
+  <:tab to="/roles/edit/generals" >
+    <%= @config[:txt_tab_generals] %> 
+  </:tab>
+  <:tab to="/roles/edit/permissions"  selected="true">
+    <%= @config[:txt_tab_permissions] %> 
+  </:tab>
+  <:tab to="/roles/edit/users" badge="12" badge_color="info">
+    <%=  @config[:txt_tab_users] %> 
+  </:tab>
+</.tab_select>
+<div class="row">
+  <div class="col-12 col-md-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="mb-2 pb-2 border-bottom">
+          <form class="d-flex">
+            <input class="form-control me-2 flex-1" type="search" placeholder="Buscar" aria-label="Buscar">
+          </form>
+        </div>
+        <div class="mb-2">
+          <.list let={entry} list={@list}>
+            <.item_list_title_actions to={entry[:to]} data={entry} class="ps-3">
+              <:title> <%= entry[:title] %></:title>
+              <:subtitle> <%= entry[:subtitle] %> </:subtitle>
+              <:actions> 
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked={if entry[:checked] == true do "checked" end }>
+                </div>
+                </:actions>
+            </.item_list_title_actions>
+          </.list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

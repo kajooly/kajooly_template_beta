@@ -1,28 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "KajoolyTemplateBeta", suffix: " · Phoenix Framework" %>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
-  </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            
-          </ul>
-        </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <%= @inner_content %>
-  </body>
+<html lang={ assigns[:page_lang] || "es" }>
+
+<head>
+    <%= render "partials/head/head.html", assigns %>
+</head>
+<!-- body start -->
+
+<!-- Se genera un mapa con los datos que necesita body, 
+en este caso se estan reciviendo desde el router con assigns-->
+<% map = %{
+        mode: assigns.mode,
+        width: assigns.width,
+        menuPosition: assigns.menuPosition,
+        sidebar: assigns.sidebar,
+        topbar: assigns.topbar,
+        showRightSidebarOnPageLoad: assigns.showRightSidebarOnPageLoad
+    } %>
+     <!-- para que no de error primero se debe de convertir a un tipo de dato json pero sanitizado,
+  para que elixir no de error de protocol Phoenix.HTML.Safe not implemented for %{} -->
+<body class="loading" data-layout={Jason.encode_to_iodata!(map)}>
+    <!-- Begin page -->
+    <div id="wrapper">
+        <!-- Topbar Start -->
+        <%= if assigns.layoutsFrom != nil and assigns.navbar_html_path != nil do %>
+            <%= render assigns[:layoutsFrom], assigns.navbar_html_path, assigns %>
+        <% else %>
+            <%= render "partials/body/navbar.html", assigns %>
+        <% end %>
+        <!-- end Topbar -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <%= if assigns.layoutsFrom != nil and assigns.sidebar_html_path != nil do %>
+            <%= render assigns[:layoutsFrom], assigns.sidebar_html_path, assigns %>
+        <% else %>
+            <%= render "partials/body/left-menu.html", assigns %>
+        <% end %>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page px-0">
+            <div class="content">
+                <!-- Start Content-->
+                <div class="container-fluid pt-0">
+                    <!-- start page title -->
+                    <%#= render "partials/body/page-title-box.html", assigns %>
+                    <!-- end page title -->
+
+                    <!-- content-->
+                    <%= @inner_content %>
+                    <!--  end content-->
+
+                    <!-- end row-->
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            <%#= render "partials/body/footer.html", assigns %>
+            <!-- end Footer -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    <%#= render "partials/body/right-sidebar.html", assigns %>
+    <!-- /Right-bar -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <%= render "partials/body/scripts.html", assigns %>
+
+</body>
+
 </html>

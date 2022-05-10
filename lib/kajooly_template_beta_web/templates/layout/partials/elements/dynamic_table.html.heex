@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body p-0">
+                <table id="demo-foo-addrow" class="table table-centered table-striped table-bordered mb-0 toggle-circle" data-page-size="7">
+                    <thead>
+                    <tr>
+                        <%= for head <- @head do %>
+                            <th class=""><%= head.title %> </th>
+                        <% end %> 
+                        <!--<th class="d-none d-md-display">Name</th>-->
+                        <%= if @tools do %>
+                        <th data-sort-ignore="true" class="min-width"></th>
+                        <% end %>
+                    </tr>
+                    </thead>
+                    <tbody>
+                     <%= for row <- @list do %>
+                      <tr>
+                        <%= for col <- row do %>
+                            <td id={"td_#{col[:id]}_#{col[:col]}" }> <%= col[:title] %></td>
+                        <% end %>
+                        <%= if @tools do %>
+                            <td >tools</td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                      <tr>
+
+                        <td class="d-none d-md-display"><%#= node.type %></td>
+                        <td class="d-none d-md-display"><%#= node.name %></td>
+                        <td class="d-none d-md-display"><%#= node.description %></td>
+                        <td class="d-none d-md-display"><%#= node.notes%></td>
+                  
+                        <td>
+                        <!--
+                            <.displaymoney 
+                                symbol="B" 
+                                color="danger"
+                                go_to={Routes.generic_index_path(@socket, :modal)}
+                                >
+                                <%#= node.price %>
+                            </.displaymoney>
+                        -->
+                        </td>
+                        <td>
+                            <!--
+                            <.displaymoney 
+                                symbol="S" 
+                                color="succes"
+                                go_to={Routes.generic_index_path(@socket, :modal, node)}
+                                >
+                                <%#= node.price %>
+                            </.displaymoney>
+                            -->
+                        </td>
+                        <td>
+                        <%#= live_patch to: Routes.generic_show_path(@socket, :show, node.name), class: "btn btn-primary " do %>
+                              <i class="ri-eye-fill"></i>
+                        <%# end %>
+                        </td>                       
+                    </tr> 
+                    <%# end %>               
+                    </tbody>
+                    <tfoot>
+                    <tr class="active">
+                        <td colspan="6">
+                            <div class="text-end">
+                                <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div>
+<!-- end row -->

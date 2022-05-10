@@ -1,0 +1,163 @@
+
+<%= if @live_action in [:modal] do %>
+  <.kjl_modal return_to="#">
+   <div class="modal-header pt-0">
+        <h4 class="modal-title" id="standard-modalLabel">New operation</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="btn-group mb-2 w-100">
+                    <button type="button" class="btn btn-primary py-2 font-24 active">
+                        Sell
+                    </button>
+                    <button type="button" class="btn btn-light py-2 font-24">
+                        Buy
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <div class="row">
+                    <div class="col-6">
+                        <span class="float-start pe-3 mt-1 mb-3 font-42 w-25">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-currency-bitcoin " viewBox="0 0 16 16">
+                                <path d="M5.5 13v1.25c0 .138.112.25.25.25h1a.25.25 0 0 0 .25-.25V13h.5v1.25c0 .138.112.25.25.25h1a.25.25 0 0 0 .25-.25V13h.084c1.992 0 3.416-1.033 3.416-2.82 0-1.502-1.007-2.323-2.186-2.44v-.088c.97-.242 1.683-.974 1.683-2.19C11.997 3.93 10.847 3 9.092 3H9V1.75a.25.25 0 0 0-.25-.25h-1a.25.25 0 0 0-.25.25V3h-.573V1.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25V3l-1.998.011a.25.25 0 0 0-.25.25v.989c0 .137.11.25.248.25l.755-.005a.75.75 0 0 1 .745.75v5.505a.75.75 0 0 1-.75.75l-.748.011a.25.25 0 0 0-.25.25v1c0 .138.112.25.25.25L5.5 13zm1.427-8.513h1.719c.906 0 1.438.498 1.438 1.312 0 .871-.575 1.362-1.877 1.362h-1.28V4.487zm0 4.051h1.84c1.137 0 1.756.58 1.756 1.524 0 .953-.626 1.45-2.158 1.45H6.927V8.539z"/>
+                            </svg>
+                        </span>
+                        <p class="w-75 float-start font-24 mb-0">
+                        BTC
+                        </p>
+                        <p class="w-75 float-start font-12 text-success">
+                        387439.26
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-check form-switch float-end pe-4 font-20 pt-2">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Order</label>
+                                </div>
+                            </div>
+                            <div class="col-6 text-end text-success font-12">
+                                165.66 (0.48%)
+                            </div>
+                            <div class="col-6 text-end font-10 text-muted pe-4">
+                                Mercado abierto
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <div class="row">
+                    <div class="col-8 offset-2">
+                    <div class="input-group mb-3">
+                            <span class="font-20 pt-1 pe-4 w-25">Tasa </span>
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
+                            <input type="number" step="any" class="form-control text-center font-16" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="23920.31">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+                        </div>
+                    </div>
+                    <div class="col-8 offset-2">
+                    <div class="input-group mb-3">
+                            <span class="font-20 pt-1 pe-4 w-25">Importe </span>
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
+                            <input type="number" step="any" class="form-control text-center font-16" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="23920.31">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </.kjl_modal>
+<% end %>
+
+    <.breadcrum>
+    Breadcrum title
+</.breadcrum>  
+
+<.breadcrum to="#" >
+    Section page
+    <:page to="#">Page name</:page>
+    <:page >Final page name</:page>
+</.breadcrum>  
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body p-0">
+                <table id="demo-foo-addrow" class="table table-centered table-striped table-bordered mb-0 toggle-circle" data-page-size="7">
+                    <thead>
+                    <tr>
+                        <th>Node</th>
+                        <th class="d-none d-md-display">Type</th>
+                        <th class="d-none d-md-display">Name</th>
+                        <th class="d-none d-md-display">Description</th>
+                        <th class="d-none d-md-display">Notes</th>
+                        <th>Env</th>
+                        <th>Price</th>
+                        <th>Price</th>
+                        <th data-sort-ignore="true" class="min-width"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%= for node <- @nodes do %>
+                      <tr>
+                        <td><%= node.node %></td>
+                        <td class="d-none d-md-display"><%= node.type %></td>
+                        <td class="d-none d-md-display"><%= node.name %></td>
+                        <td class="d-none d-md-display"><%= node.description %></td>
+                        <td class="d-none d-md-display"><%= node.notes%></td>
+                        <td><%= node.env %></td>
+                        <td>
+                            <.displaymoney 
+                                symbol="B" 
+                                color="danger"
+                                go_to="#"
+                                >
+                                <%= node.price %>
+                            </.displaymoney>
+                        </td>
+                        <td>
+                            <.displaymoney 
+                                symbol="S" 
+                                color="succes"
+                                go_to="#"
+                                >
+                                <%= node.price %>
+                            </.displaymoney>
+                        </td>
+                        <td>
+                        <%= live_patch to: "#", class: "btn btn-primary " do %>
+                              <i class="ri-eye-fill"></i>
+                        <% end %>
+                        </td>                       
+                    </tr> 
+                    <% end %>               
+                    </tbody>
+                    <tfoot>
+                    <tr class="active">
+                        <td colspan="6">
+                            <div class="text-end">
+                                <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div>
+<!-- end row -->

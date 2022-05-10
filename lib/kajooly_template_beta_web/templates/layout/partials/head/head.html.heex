@@ -1,0 +1,25 @@
+<meta charset="utf-8" />
+<%= csrf_meta_tag() %>
+<%= live_title_tag assigns[:page_title] || "Kjooly Templet Alpha", suffix: assigns[:page_suffix] || "" %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content={assigns[:meta_description]||"Kajooly template Alpha - Phoenix Framework"} name="description" />
+<meta content={assigns[:meta_author]||"Kajooly"} name="author" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- App favicon -->
+<%= if Map.has_key?(assigns, :favicon ) do %>
+    <%= if assigns.favicon != nil do %>
+        <link rel="shortcut icon" href={Routes.static_path(@conn, assigns.favicon)}>
+    <% end %>  
+<% else %>
+<link rel="shortcut icon" href={Routes.static_path(@conn, "/assets/images/favicon.ico")}>
+<%end %>
+<!-- App css -->
+<link href={Routes.static_path(@conn, "/assets/css/default/bootstrap.min.css")} rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+<link href={Routes.static_path(@conn, "/assets/css/default/app.min.css")} rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+<link href={Routes.static_path(@conn, "/assets/css/kajooly.css")} rel="stylesheet" type="text/css" />
+<link href={Routes.static_path(@conn, "/assets/css/default/bootstrap-dark.min.css")} rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+<link href={Routes.static_path(@conn, "/assets/css/default/app-dark.min.css")} rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+<!-- icons -->
+<link href={Routes.static_path(@conn, "/assets/css/icons.min.css")} rel="stylesheet" type="text/css" />
