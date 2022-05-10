@@ -32,7 +32,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config(:kajooly_template_alfa,
+config(:kajooly_template_beta,
     page_suffix: " - Software & Startup Premium Landing Page Template",
     page_lang: :en,
     mode: "light",
