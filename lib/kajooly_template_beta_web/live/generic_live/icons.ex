@@ -285,4 +285,31 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Icons do
       </svg>
     """
   end
+  def icons_key (assigns) do
+    ~H"""
+      <svg xmlns="http://www.w3.org/2000/svg" id={assigns[:id]||"icons_unlock_fill#{gen_id_key()}"} width={assigns[:width]||"16"} height={assigns[:height]||"16"} fill={assigns[:fill]||"currentColor"} class={"bi bi-key  #{assigns[:class]}"} viewBox="0 0 16 16">
+        <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+        <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+      </svg>
+
+    """
+  end
+  def icons_door_open (assigns) do
+    ~H"""
+      <svg xmlns="http://www.w3.org/2000/svg" id={assigns[:id]||"icons_unlock_fill#{gen_id_key()}"} width={assigns[:width]||"16"} height={assigns[:height]||"16"} fill={assigns[:fill]||"currentColor"} class={"bi bi-door-open  #{assigns[:class]}"} viewBox="0 0 16 16">
+        <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+        <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+      </svg>
+    """
+  end
+
+
+  def icons_body_text (assigns) do
+    ~H"""
+      <svg xmlns="http://www.w3.org/2000/svg" id={assigns[:id]||"icons_unlock_fill#{gen_id_key()}"} width={assigns[:width]||"16"} height={assigns[:height]||"16"} fill={assigns[:fill]||"currentColor"} class={"bi bi-body-text #{assigns[:class]}"} viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 0 .5Zm0 2A.5.5 0 0 1 .5 2h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm9 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm-9 2A.5.5 0 0 1 .5 4h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm5 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm7 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm-12 2A.5.5 0 0 1 .5 6h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5Zm8 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm-8 2A.5.5 0 0 1 .5 8h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm7 0a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm-7 2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
+      </svg>
+    """
+  end
+
 end
