@@ -229,53 +229,97 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
     ~H"""
     <.resume_top_two_elemnts {assigns} >
       <:icon_a>
-        <.icons_key class="flex-2 mt-2 ms-2 me-3" width="64" height="64" />
+        <.icons_shield_lock class="flex-2 mt-2 ms-2 me-3" width="64" height="64" />
       </:icon_a>
-      <:icon_b>
-        <.icons_door_open class="flex-2 mt-2 mxms-2 -e " width="64" height="64" />
-      </:icon_b>
     </.resume_top_two_elemnts>
 
     <div class="row p-2 bg-white">
 
-    <div class="col-12 col-md-6 col-lg-8 mx-auto">
-      <div class="card shadow">
-        <div class="card-body d-flex w-100  p-2">
-          <p class="fs-4 mb-0 flex-1 pt-1 ps-2 pb-0" class="flex-1 m-0 p-0">
-            Conexiones a cuentas de acceso
-            <br/>
-            <span class="text-muted">
-            Atributos
-            </span>
-          </p>
-          <!--
-          <%= live_patch to: assigns[:to_tab_actions] || "#", class: "btn flex-2" do %>
-            <.icons_pencil_square />
-          <% end %>
-          -->
-        </div>
-        <div class="card-body w-100  p-2">
-        <%= if length(assigns.list_b) > 0 do %>
+      <div class="col-12 col-md-6 col-lg-5 mx-auto">
+        <div class="card shadow">
+          <div class="card-body d-flex w-100 bg-info p-2">
+            <p class="fs-4 mb-0 flex-1 pt-1 ps-2 pb-0 text-white" class="flex-1 m-0 p-0">
+              Detalle del método
+              <br/>
+            </p>
+            <!--
+            <%= live_patch to: assigns[:to_tab_actions] || "#", class: "btn flex-2" do %>
+              <.icons_pencil_square />
+            <% end %>
+            -->
+          </div>
+          <div class="card-body w-100  p-2">
+            <ol class="list-group list-group-numbered shadow-lg">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">Tenant</div>
+                      <code><%= assigns[:tenant_id] || "assigns[:tenant_id]" %></code>
+                  </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">Nombre</div>
+                      <%= assigns[:name] || "assigns[:name]" %>
+                  </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">Atom</div>
+                      <%= assigns[:atom] || "assigns[:atom]" %>
+                  </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">Descripción</div>
+                      <p class="border-white m-2 rounded shadow"><%= assigns[:description] || "assigns[:description]" %></p>
+                  </div>
+              </li>
+          </ol>
 
-          <.list let={entry} list={assigns.list_b}>
-            <.item_list_title_actions to={entry.to} icon="true" class="ps-3">
-              <:icon>
-                <.name_user text={entry.alias} />
-              </:icon>
-              <:title> <%= entry.alias %></:title>
-              <:subtitle> <%= entry.name %> </:subtitle>
-              <:actions>
-                </:actions>
-            </.item_list_title_actions>
-          </.list>
-          <% else %>
-            <div class="alert alert-info alert-dismissible fade show m-2 m-md-4 m-lg-3 pe-4" role="alert">
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              Lista de identidades vacia.
-            </div>
-          <% end %>
+          </div>
         </div>
       </div>
+      <div class="col-12 col-md-6 col-lg-7 mx-auto">
+        <div class="card shadow">
+          <div class="card-body d-flex w-100  p-2">
+            <p class="fs-4 mb-0 flex-1 pt-1 ps-2 pb-0" class="flex-1 m-0 p-0">
+              Proveedores enlazados a este método
+              <br/>
+              <span class="text-muted">
+              Proveedores del método
+              </span>
+            </p>
+            <!--
+            <%= live_patch to: assigns[:to_tab_actions] || "#", class: "btn flex-2" do %>
+              <.icons_pencil_square />
+            <% end %>
+            -->
+          </div>
+          <div class="card-body w-100  p-2">
+          <%= if length(assigns.list_a) > 0 do %>
+
+            <.list let={entry} list={assigns.list_a}>
+              <.item_list_title_actions to={entry.to} icon="true" class="ps-3">
+                <:icon>
+                  <.name_user text={entry.alias} />
+                </:icon>
+                <:title> <%= entry.name %></:title>
+                <:subtitle> <code><%= entry.alias %></code>
+                <p class="mb-0"><%= entry.description %></p>
+                </:subtitle>
+                <:actions>
+
+                  </:actions>
+              </.item_list_title_actions>
+            </.list>
+            <% else %>
+              <div class="alert alert-info alert-dismissible fade show m-2 m-md-4 m-lg-3 pe-4" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                Lista de métodos vacia.
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
     """
@@ -334,9 +378,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
                             </:icon>
                              <:title> <%= entry[:title] %> </:title>
                              <:subtitle>
-                              <.badges color="success">
                                 <%= entry[:subtitle] %>
-                              </.badges>
                              </:subtitle>
                              <:actions>
                               <.dropdown class="float-end" class_button="btn-sm float-end ms-1 border-0">
@@ -380,11 +422,11 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
          </div>
        </div>
        <div class="col-12 col-md-3 d-none d-lg-block me-auto ">
-         <div class="card rounded-3 border-info text-info">
+         <div class="card rounded-3 border-success text-success">
            <div class="card-body p-1 d-flex ps-2">
-             <.icons_person_rolodex class="flex-2 mt-2 mxms-2 -e " width="64" height="64" />
+             <.icons_signpost class="flex-2 mt-2 mxms-2 -e " width="64" height="64" />
              <div class="flex-1">
-               <h3 class="m-0 text-info text-center"><%= assigns[:txt_count] || "[0]" %> </h3>
+               <h3 class="m-0 text-success text-center"><%= assigns[:txt_count] || "[0]" %> </h3>
                <p class="m-0 text-muted fs-6 text-end">
                  <%= assigns[:txt_count_title] || "txt_count_title" %>
                </p>
@@ -393,8 +435,8 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
          </div>
          <div class="card">
            <div class="card-body">
-               <h4 class="header-title">Sistema de identidades </h4>
-               <p class="sub-header">Administre en esta sección las <code>identidades</code> disponibles en este <code>servidor</code>. En cada identidad podrá ver los <code>los accesos</code> y <code>la cantidad de llaves</code> con los cuales podrá acceder esta identidad en este <code>servidor</code>.
+               <h4 class="header-title">Sistema de métodos </h4>
+               <p class="sub-header">Administre en esta sección las <code>métodos</code> disponibles en este <code>servidor</code>. En cada método podrá ver los <code>los métodos de proveedores</code> y los detalles de cada <code>método</code>, con los cuales podrá acceder esta método en este <code>servidor</code>.
                </p>
            </div> <!-- end card-body -->
          </div>
@@ -428,25 +470,18 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
 
   def contexts_resume(assigns) do
     ~H"""
-    <.resume_top_two_elemnts {assigns} >
-      <:icon_a>
-        <.icons_key class="flex-2 mt-2 ms-2 me-3" width="64" height="64" />
-      </:icon_a>
-      <:icon_b>
-        <.icons_door_open class="flex-2 mt-2 mxms-2 -e " width="64" height="64" />
-      </:icon_b>
-    </.resume_top_two_elemnts>
+    <.resume_top_title {assigns} />
 
     <div class="row p-2 bg-white">
 
     <div class="col-12 col-md-6 col-lg-8 mx-auto">
       <div class="card shadow">
-        <div class="card-body d-flex w-100  p-2">
-          <p class="fs-4 mb-0 flex-1 pt-1 ps-2 pb-0" class="flex-1 m-0 p-0">
-            Conexiones a cuentas de acceso
+        <div class="card-body d-flex w-100 bg-primary p-2">
+          <p class="fs-4 mb-0 flex-1 pt-1 ps-2 pb-0 text-white" class="flex-1 m-0 p-0">
+            Detalle del contexto
             <br/>
-            <span class="text-muted">
-            Atributos
+            <span class="text-light">
+            Contextos
             </span>
           </p>
           <!--
@@ -456,25 +491,33 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
           -->
         </div>
         <div class="card-body w-100  p-2">
-        <%= if length(assigns.list_b) > 0 do %>
+          <ol class="list-group list-group-numbered shadow-lg">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Tenant</div>
+                    <code><%= assigns[:tenant_id] || "assigns[:tenant_id]" %></code>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Nombre</div>
+                    <%= assigns[:name] || "assigns[:name]" %>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Atom</div>
+                    <%= assigns[:atom] || "assigns[:atom]" %>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Descripción</div>
+                    <p class="border-white m-2 rounded shadow"><%= assigns[:description] || "assigns[:description]" %></p>
+                </div>
+            </li>
+        </ol>
 
-          <.list let={entry} list={assigns.list_b}>
-            <.item_list_title_actions to={entry.to} icon="true" class="ps-3">
-              <:icon>
-                <.name_user text={entry.alias} />
-              </:icon>
-              <:title> <%= entry.alias %></:title>
-              <:subtitle> <%= entry.name %> </:subtitle>
-              <:actions>
-                </:actions>
-            </.item_list_title_actions>
-          </.list>
-          <% else %>
-            <div class="alert alert-info alert-dismissible fade show m-2 m-md-4 m-lg-3 pe-4" role="alert">
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              Lista de identidades vacia.
-            </div>
-          <% end %>
         </div>
       </div>
       </div>
@@ -605,6 +648,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.AuthnLayout do
     """
   end
 
+  @spec contexts_modal_delete(any) :: Phoenix.LiveView.Rendered.t()
   def contexts_modal_delete (assigns) do
     ~H"""
     <div class="row">
