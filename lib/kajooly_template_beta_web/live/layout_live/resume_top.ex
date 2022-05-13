@@ -70,7 +70,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
       <div class="row px-2">
         <div class="col">
           <div class="row mb-0 mb-md-3">
-            <div class="col-12 col-md-6 d-flex ">
+            <div class={"col-12 col-md-#{ if assigns[:txt_count_b] != nil do "6" else "9" end } d-flex "}>
               <div class="flex-2 pt-3">
                 <%= live_patch to: assigns[:to_edit_recurse], class: "btn" do %>
                   <.icons_pencil_square />
@@ -96,6 +96,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
                 </div>
               </div>
             </div>
+            <%= if assigns[:txt_count_b] != nil do %>
             <div class="col-6 col-md-3  ">
               <div class={"card rounded-3 border-#{assigns[:txt_b_color] || "primary" } text-#{assigns[:txt_b_color] || "primary" }"}>
                 <div class="card-body p-1 d-flex ps-2">
@@ -109,6 +110,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
                 </div>
               </div>
             </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -159,4 +161,59 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
       """
 
     end
+    @doc """
+    %{
+      txt_bc_title: "Identidades",
+      txt_bc_title_2: "Identidad",
+      txt_bc_title_3: "Resumen ",
+      txt_bc_title_4: "d.alias",
+      txt_resource_name: "d.alias",
+      to_index: "#",
+      to_this:  "#"
+    }
+  ## Examples
+
+    <.resume_top_two_elemnts
+      {%{
+        txt_bc_title: "Identidades",
+        txt_bc_title_2: "Identidad",
+        txt_bc_title_3: "Resumen ",
+        txt_bc_title_4: "d.alias",
+        txt_resource_name: "d.alias",
+        to_index: "#",
+        to_this:  "#"
+      }}
+    />
+
+  """
+  def resume_top_title(assigns) do
+    ~H"""
+      <.breadcrum to={assigns[:to_index]||"#to_index"} >
+        <%= assigns[:txt_bc_title] %>
+        <:page to={assigns[:to_index]}> <%= assigns[:txt_bc_title_2] %> </:page>
+        <:page to={assigns[:to_this]}> <%= assigns[:txt_bc_title_3] %> </:page>
+        <:page> <%= assigns[:txt_bc_title_4] %> </:page>
+      </.breadcrum>
+      <div class="row px-2">
+        <div class="col">
+          <div class="row mb-0 mb-md-3">
+            <div class="col-12 col-md-6 d-flex ">
+              <div class="flex-2 pt-3">
+                <%= live_patch to: assigns[:to_edit_recurse], class: "btn" do %>
+                  <.icons_pencil_square />
+                <% end %>
+              </div>
+              <div class="flex-1">
+                <h4 class="mt-3 mb-0">
+                <%= assigns[:txt_resource_name] %>
+                </h4>
+                <p class="fs-5 text-muted "><%= assigns[:txt_bc_title_4] %> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    """
+
+  end
 end
