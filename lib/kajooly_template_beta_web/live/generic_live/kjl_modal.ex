@@ -21,13 +21,42 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.KjlModal do
           return_to={Routes.ticket_index_path(@socket, :index)}
           ticket: @ticket
         />
+        <div>
+          <.form
+            let={f}
+            for={@changeset}
+            id="identity-form"
+            phx-target={@myself}
+            phx-change="validate"
+            phx-submit="save">
+            <%= hidden_input f, :k_id, value: "7a3e94c1-4084-4249-adc2-961ffecbd216" %>
+            <%= error_tag f, :k_id %>
+
+            <.kjl_label label="Alias">
+              <%= textarea f, :alias, class: "form-control"  %>
+              <%= error_tag f, :alias %>
+            </.kjl_label>
+
+            <.kjl_label label="Confirmación">
+              <%= datetime_select f, :comfirmed_at %>
+              <%= error_tag f, :comfirmed_at %>
+            </.kjl_label>
+              <div class="modal-footer">
+                <%= if @changeset.data.id != nil do %>
+                  <%= live_patch "Borrar", to: Routes.identity_index_path(@socket, :delete, f.data.id), class: "btn btn-outline-danger"  %>
+                <% end %>
+                <%= submit "Guardar", class: "btn btn-primary" , phx_disable_with: "Guardando..." %>
+            </div>
+          </.form>
+        </div>
+
       </.kjl_modal>
   """
   def kjl_modal(assigns) do
     assigns = assign_new(assigns, :return_to, fn -> nil end)
 
     ~H"""
-    <div id="modal" class="phx-modal fade-in" phx-remove={hide_modal()}>
+    <div id="modal" class="phx-modal fade-in" phx-remove={hide_modal()} style="z-index: 1200;">
       <div
         id="modal-content"
         class="phx-modal-content fade-in-scale rounded shadow-lg border-light"

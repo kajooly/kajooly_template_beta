@@ -35,7 +35,10 @@ defmodule KajoolyTemplateBetaWeb.Router do
   scope "/", KajoolyTemplateBetaWeb, assigns: page_assigns do
     pipe_through :browser
 
-    get "/", PageController, :index
+
+    live "/", LayoutLive.Index, :index
+
+
   end
 
   # Other scopes may use custom stacks.
