@@ -40,6 +40,9 @@ defmodule KajoolyTemplateBetaWeb.Router do
     live "/examples", ExamplesLive.Index, :index
     live "/examples/contact-list", ExampleContactListLive.Index, :index
 
+    live "/treeview", TreeviewLive.Index, :index
+    live "/treeview/basic", TreeviewLive.Basic, :index
+
 
   end
 
