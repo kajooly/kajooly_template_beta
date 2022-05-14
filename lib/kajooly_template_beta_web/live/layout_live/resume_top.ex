@@ -60,10 +60,10 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
   """
   def resume_top_two_elemnts(assigns) do
     ~H"""
-      <.breadcrum to={assigns[:to_index]||"#to_index"} >
+      <.breadcrum to={assigns[:to_index]} >
         <%= assigns[:txt_bc_title] %>
-        <:page to={assigns[:to_index]}> <%= assigns[:txt_bc_title_2] %> </:page>
-        <:page to={assigns[:to_this]}> <%= assigns[:txt_bc_title_3] %> </:page>
+        <:page to={assigns[:to_index]}><%= assigns[:txt_bc_title_2] %></:page>
+        <:page to={assigns[:to_this]}><%= assigns[:txt_bc_title_3] %></:page>
         <:page> <%= assigns[:txt_bc_title_4] %> </:page>
       </.breadcrum>
 

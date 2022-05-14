@@ -37,6 +37,8 @@ defmodule KajoolyTemplateBetaWeb.Router do
 
 
     live "/", LayoutLive.Index, :index
+    live "/examples", ExamplesLive.Index, :index
+    live "/examples/contact-list", ExampleContactListLive.Index, :index
 
 
   end

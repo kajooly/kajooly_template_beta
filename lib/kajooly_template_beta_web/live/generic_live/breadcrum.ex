@@ -20,6 +20,13 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Breadcrum do
           Return
       </.breadcrum>
 
+      <.breadcrum pages={[
+          %{ title: "Lista de contactos", to: "#contact" },
+          %{ title: "Ver contecto", to: "#contact-view" },
+          %{ title: "NOMBRE DEL CONTECTO", to: nil },
+          ]}>
+          Return
+      </.breadcrum>
       <.breadcrum to="#" >
           Section page
           <:page to="#">Page name</:page>
@@ -30,7 +37,7 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Breadcrum do
 
   """
   def breadcrum(assigns) do
-    assigns = assign_new(assigns, :page, fn -> [] end)
+    assigns = assign_new(assigns, :page, fn -> assigns[:pages] || [] end)
     ~H"""
     <div class="row">
       <div class="col-12">
@@ -53,12 +60,12 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Breadcrum do
                 <%= for item <- @page do %>
                   <%= if item[:to] == nil do %>
                     <li class="breadcrumb-item active">
-                      <%= render_slot(item) %>
+                      <%= item[:title] || render_slot(item) %>
                     </li>
                   <% else %>
                     <li class="breadcrumb-item">
                       <%= live_patch to: item[:to] do %>
-                        <%= render_slot(item) %>
+                        <%= item[:title] || render_slot(item) %>
                       <% end %>
                     </li>
                   <% end %>
