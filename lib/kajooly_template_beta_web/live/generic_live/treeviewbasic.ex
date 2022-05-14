@@ -18,23 +18,29 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Treeviewbasic do
       <.treeviewbasic>
       </.treeviewbasic>
 
+      <.treeviewbasic name="Example name">
+      </.treeviewbasic>
+
   """
 
   def treeviewbasic (assigns) do
+    name=assigns[:name] || "Sin Nombre"
+    get_list=assigns[:get_list] || ""
     ~H"""
     <.breadcrum pages={assigns[:breadcrum]}>
       Treeview Basic
     </.breadcrum>
     <div class="row">
-      <div class="col-xl-10 col-lg-10 col-md-10 col-sm-8">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="card">
               <div class="card-body">
-                  <h4 class="header-title mb-3">Basic Tree</h4>
+                  <h4 class="header-title mb-3"> <%= name %></h4>
 
                   <div id="basicTree">
                     <ul>
                         <li><b>MINTON</b>
                             <ul>
+
                               <li data-jstree='{"opened":true}'>Assets
                                   <ul>
                                     <li data-jstree='{"type":"file"}'>Css</li>
