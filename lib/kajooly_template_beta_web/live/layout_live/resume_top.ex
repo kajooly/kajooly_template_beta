@@ -78,9 +78,9 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
               </div>
               <div class="flex-1">
                 <h4 class="mt-3 mb-0">
-                <%= assigns[:txt_resource_name] %>
+                <%= assigns[:txt_title] || "txt_title" %>
                 </h4>
-                <p class="fs-5 text-muted "><%= assigns[:txt_bc_title_4] %> </p>
+                <p class="fs-5 text-muted "><%= assigns[:txt_subtitle] || "txt_subtitle" %> </p>
               </div>
             </div>
             <div class="col-6 col-md-3  ">
