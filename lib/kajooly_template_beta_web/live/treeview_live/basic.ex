@@ -6,7 +6,7 @@ defmodule KajoolyTemplateBetaWeb.TreeviewLive.Basic do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket,  roles: roles(socket), config: config(socket) )}
+    {:ok, assign(socket,  roles: roles(socket), config: config(socket), treeviewbasicdata: treeviewbasicdata(), list_treeview: list_treeview() )}
   end
 
   @impl true
@@ -17,6 +17,8 @@ defmodule KajoolyTemplateBetaWeb.TreeviewLive.Basic do
   defp apply_action(socket, :index, _params) do
     socket
     |> assign(:page_title, "Tree View Page")
+    |> assign(:treeviewbasicdata, treeviewbasicdata())
+    |> assign(:list_treeview, list_treeview())
   end
 
   def roles(socket) do
@@ -48,5 +50,27 @@ defmodule KajoolyTemplateBetaWeb.TreeviewLive.Basic do
 
   def config(socket) do
     treeview_config(socket)
+  end
+
+  def treeviewbasicdata() do
+    %{
+      name: "Treeview Basic Testeando",
+      directory: "basic",
+    }
+  end
+
+  def list_treeview() do
+    [
+      %{
+        alias: "treeviewbasic",
+        id: "614fa707-4524-45cb-a5fa-21c6bfc8c8bd",
+        name: "ejemplo",
+      },
+      %{
+        alias: "treeviewbasic_2",
+        id: "746fa707-4524-45cb-a5fa-21c6bfc8c8bd",
+        name: "ejemplo 2",
+      }
+    ]
   end
 end
