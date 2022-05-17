@@ -6,6 +6,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.TicketsLayout do
   import KajoolyTemplateBetaWeb.GenericLive.Icons
   import KajoolyTemplateBetaWeb.GenericLive.Dropdown
   import KajoolyTemplateBetaWeb.LayoutLive.ResumeTop
+  import KajoolyTemplateBetaWeb.GenericLive.Tabs
   use Phoenix.LiveComponent
 
   @doc """
@@ -34,10 +35,25 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.TicketsLayout do
           <.icons_check_circle class="flex-2 mt-2 mxms-2 -e " width="64" height="64" />
         </:cards>
       </.resume_top_elemnts>
-      <div class="row">
+
+      <.tab_select tab={assigns[:tabs]}>
+      </.tab_select>
+      <div class="row bg-white">
+        <div class="col-12 my-2">
+          <div class=" d-flex">
+            <div class="flex-1 px-4">
+              <%= render_slot(@search) %>
+            </div>
+            <%= live_patch to: assigns[:to_new] || "#to_new", class: "btn btn-outline-success flex-2" do %>
+              <%= assigns[:to_new_title] || "to_new_title" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row bg-white">
         <div class="col-12">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body p-0 shadow">
               <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                 <thead class="bg-light">
                 <tr>
@@ -144,10 +160,15 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.TicketsLayout do
     ~H"""
       <.resume_top_elemnts {assigns}>
       </.resume_top_elemnts>
-      <div class="row">
+
+      <.tab_select>
+        <:tab to="#" selected="true">Detalles</:tab>
+        <:tab to="#">Logica de negoció</:tab>
+      </.tab_select>
+      <div class="row bg-white pt-2">
         <div class="col-xl-8">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body px-2 pt-3">
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle arrow-none text-muted" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class='mdi mdi-dots-horizontal font-18'></i>
@@ -251,7 +272,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.TicketsLayout do
             </div>
 
             <div class="card d-none">
-                <div class="card-body">
+                <div class="card-body p-2">
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle arrow-none text-muted"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -358,7 +379,7 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.TicketsLayout do
 
         <div class="col-xl-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body px-2 pt-3">
                     <.dropdown
                       class="float-end"
                       class_button="btn-sm float-end ms-2 btn-outline-secondary"

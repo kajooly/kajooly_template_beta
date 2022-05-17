@@ -40,6 +40,7 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Tabs do
     id = assigns[:id] || "dropdownMenuButtonTabSelect_#{to_string(Enum.random(99..999))}"
     assigns = assign_new(assigns, :tab, fn -> [] end)
     selected = Enum.find(assigns.tab, fn x -> x[:selected] != nil end)
+
     ~H"""
       <div class="dropdown w-100 d-block d-lg-none">
         <button class="btn btn-white bg-white border-light dropdown-toggle w-100 text-start mb-2 color-dark" type="button" id={id} data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,23 +53,13 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Tabs do
         <ul class="dropdown-menu w-100 shadow-lg" aria-labelledby={id}>
           <%= if @tab != nil do %>
             <%= for item <- @tab do %>
-              <%= if item[:to] == nil do %>
                 <li class="dropdown-item d-flex ">
-                  <%= render_slot(item) %>
+                  <%= item[:title] || render_slot(item) %>
                   <%= if item[:badge] != nil do %>
                   <span class={ if item[:badge_color] != nil do " pt-1 badge rounded-pill bg-#{item[:badge_color]}" else " pt-1 badge rounded-pill bg-secondary" end } ><%= item[:badge] %></span>
                   <% end %>
                 </li>
-              <% else %>
-              <li>
-                <%= live_patch to: item[:to], class: "dropdown-item d-flex  #{ if item[:selected] == "true" do "active" end }" do %>
-                  <%= render_slot(item) %>
-                  <%= if item[:badge] != nil do %>
-                    <span class={ if item[:badge_color] != nil do " pt-1 badge rounded-pill bg-#{item[:badge_color]}" else " pt-1 badge rounded-pill bg-secondary" end } ><%= item[:badge] %></span>
-                  <% end %>
-                <% end %>
-              </li>
-              <% end %>
+
             <% end %>
           <% end %>
         </ul>
@@ -77,25 +68,14 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Tabs do
         <ul class={"nav nav-tabs #{ assigns[:class]} "}>
           <%= if @tab != nil do %>
             <%= for item <- @tab do %>
-              <%= if item[:to] == nil do %>
               <li class="nav-item">
-                <div class={"nav-link text-dark"} role="button" >
-                  <%= render_slot(item) %>
+                <%= live_patch to: item[:to] || "#", class: "nav-link #{ if item[:selected] == "true" do "active" end }" do %>
+                <%= item[:title] || render_slot(item) %>
                   <%= if item[:badge] != nil do %>
                     <span class={ if item[:badge_color] != nil do " badge rounded-pill bg-#{item[:badge_color]}" else " badge rounded-pill bg-secondary" end } ><%= item[:badge] %></span>
                   <% end %>
-                  </div>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= live_patch to: item[:to], class: "nav-link #{ if item[:selected] == "true" do "active" end }" do %>
-                    <%= render_slot(item) %>
-                    <%= if item[:badge] != nil do %>
-                      <span class={ if item[:badge_color] != nil do " badge rounded-pill bg-#{item[:badge_color]}" else " badge rounded-pill bg-secondary" end } ><%= item[:badge] %></span>
-                    <% end %>
-                  <% end %>
-                </li>
-              <% end %>
+                <% end %>
+              </li>
             <% end %>
           <% end %>
         </ul>

@@ -7,6 +7,7 @@ defmodule KajoolyTemplateBetaWeb.TicketsLive.Config do
       txt_subtitle: "Listado de tickets",
       to_index: nil,
       to_this:  Routes.tickets_show_path(socket, :show) ,
+      to_new:  Routes.tickets_show_path(socket, :show) ,
       txt_breadcrum_title: "Tickets",
       txt_total_ticket: "22,342",
       txt_pending_ticket: "2,342",
@@ -15,6 +16,33 @@ defmodule KajoolyTemplateBetaWeb.TicketsLive.Config do
           %{ title: "Tickets", to: Routes.tickets_index_path(socket, :index)},
           %{ title: "Listado de tickets", to: nil }
         ],
+      tabs: [
+        %{
+          title: "Asignación",
+          to: "#",
+          badge: "34",
+          badge_color: "danger",
+          selected: "true"
+        },
+        %{
+          title: "Diseño",
+          to: "#",
+          badge: nil,
+          badge_color: nil
+        },
+        %{
+          title: "Cotización",
+          to: "#",
+          badge: nil,
+          badge_color: nil
+        },
+        %{
+          title: "Todos",
+          to: "#",
+          badge: nil,
+          badge_color: nil
+        },
+      ],
       titles: [
         %{
           title: "ID",
