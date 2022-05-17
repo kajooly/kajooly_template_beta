@@ -14,6 +14,26 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Dropdown do
   ## Examples
 
       <!-- Simple -->
+
+
+      <.dropdown options={[
+          %{
+            title: "Reciente",
+            selected: "true",
+            to: "#"
+          },
+          %{
+            title: "Más Antiguo",
+            to: "#"
+          },
+          %{
+            title: "Más reciente",
+            to: "#"
+          },
+        ]}>
+        Título del dropdown
+      </.dropdown>
+
       <.dropdown>
         Título del dropdown
         <:options to="#algo1">
@@ -55,7 +75,7 @@ defmodule KajoolyTemplateBetaWeb.GenericLive.Dropdown do
         <%= for option  <- @options  do %>
           <li>
             <%= live_patch to: option[:to], class: "dropdown-item  #{ if option[:selected] == "true" do "active" end } #{option[:class]}" do %>
-              <%= render_slot(  option ) %>
+              <%= option[:title] || render_slot(  option ) %>
             <%  end %>
           </li>
         <%  end %>
