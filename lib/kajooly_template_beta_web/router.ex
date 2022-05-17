@@ -37,11 +37,21 @@ defmodule KajoolyTemplateBetaWeb.Router do
 
 
     live "/", LayoutLive.Index, :index
-    live "/examples", ExamplesLive.Index, :index
-    live "/examples/contact-list", ExampleContactListLive.Index, :index
+
+  end
+
+  scope "/examples", KajoolyTemplateBetaWeb, assigns: page_assigns do
+    pipe_through :browser
+
+    live "/", ExamplesLive.Index, :index
+    live "/contact-list", ExampleContactListLive.Index, :index
+
+    live "/tickets", TicketsLive.Index, :index
+    live "/tickets/show", TicketsLive.Show, :show
 
     live "/treeview", TreeviewLive.Index, :index
     live "/treeview/basic", TreeviewLive.Basic, :index
+    live "/treeview/basic", TicketsLive.Index, :index
 
 
   end
