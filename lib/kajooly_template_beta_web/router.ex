@@ -38,6 +38,23 @@ defmodule KajoolyTemplateBetaWeb.Router do
 
     live "/", LayoutLive.Index, :index
 
+  end
+
+  scope "/examples", KajoolyTemplateBetaWeb, assigns: page_assigns do
+    pipe_through :browser
+
+    live "/", ExamplesLive.Index, :index
+    live "/contact-list", ExampleContactListLive.Index, :index
+
+    live "/tickets", TicketsLive.Index, :index
+    live "/tickets/show", TicketsLive.Show, :show
+    live "/tickets/custom", TicketsLive.Custom, :show
+    live "/tickets/activity", TicketsLive.Activity, :show
+
+    live "/treeview", TreeviewLive.Index, :index
+    live "/treeview/basic", TreeviewLive.Basic, :index
+    live "/treeview/basic", TicketsLive.Index, :index
+
 
   end
 
