@@ -48,6 +48,8 @@ defmodule KajoolyTemplateBetaWeb.Router do
 
     live "/tickets", TicketsLive.Index, :index
     live "/tickets/show", TicketsLive.Show, :show
+    live "/tickets/custom", TicketsLive.Custom, :show
+    live "/tickets/activity", TicketsLive.Activity, :show
 
     live "/treeview", TreeviewLive.Index, :index
     live "/treeview/basic", TreeviewLive.Basic, :index
