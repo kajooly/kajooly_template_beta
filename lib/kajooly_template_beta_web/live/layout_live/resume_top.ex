@@ -273,6 +273,11 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.ResumeTop do
         <div class="col">
           <div class="row mb-0 mb-md-3">
             <div class="col-12 col-md-3 col-lg-4 d-flex ">
+              <%= if assigns[:to_edit] != nil do %>
+                <%= live_patch to: assigns[:to_edit], class: " flex-2 btn px-2 mx-0" do %>
+                  <.icons_pencil_square class="mt-3" />
+                <% end  %>
+              <% end %>
               <div class="flex-1">
                 <h4 class="mt-3 mb-0">
                 <%= assigns[:txt_title] %>
