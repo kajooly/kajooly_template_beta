@@ -158,283 +158,363 @@ defmodule KajoolyTemplateBetaWeb.LayoutLive.TicketsLayout do
     """
     def ticket_details(assigns) do
     ~H"""
-      <.resume_top_elemnts {assigns}>
-      </.resume_top_elemnts>
-
-      <.tab_select>
-        <:tab to="#" selected="true">Detalles</:tab>
-        <:tab to="#">Logica de negoció</:tab>
-      </.tab_select>
+      <.resume_top_elemnts {assigns} />
+      <.tab_select tab={assigns.tabs} />
       <div class="row bg-white pt-2">
         <div class="col-xl-8">
-            <div class="card">
-                <div class="card-body px-2 pt-3">
-                    <div class="dropdown float-end">
-                        <a href="#" class="dropdown-toggle arrow-none text-muted" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class='mdi mdi-dots-horizontal font-18'></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                          <%= for item <- assigns[:options] do %>
-                            <%= live_patch to: item[:to], class: " dropdown-item #{item[:class]}" do %>
-                              <i class={item[:icon]}></i>
-                            <%= item[:title] %>
-                            <% end %>
-                          <% end %>
-                        </div>
+          <div class="card">
+            <div class="card-body px-2 pt-3">
+                <div class="dropdown float-end">
+                    <a href="#" class="dropdown-toggle arrow-none text-muted" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class='mdi mdi-dots-horizontal font-18'></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <%= for item <- assigns[:options] do %>
+                        <%= live_patch to: item[:to], class: " dropdown-item #{item[:class]}" do %>
+                          <i class={item[:icon]}></i>
+                        <%= item[:title] %>
+                        <% end %>
+                      <% end %>
                     </div>
-                    <p class="text-primary"><%= assigns[:hash_id] %></p>
-                    <h4 class="mb-1"> <%= assigns[:resume][:title] %></h4>
-                    <p class="text-muted mb-1"><%= assigns[:resume][:subtitle] %></p>
-                    <div class="text-muted">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="d-flex align-items-start mt-3">
-                                    <div class="me-2 align-self-center">
-                                        <i class="ri-hashtag h2 m-0 text-muted"></i>
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <p class="mb-1"><%= assigns[:resume][:title_id] %></p>
-                                        <h5 class="mt-0 text-truncate">
-                                            <%= assigns[:resume][:hash_id] %>
-                                        </h5>
-                                    </div>
+                </div>
+                <p class="text-primary"><%= assigns[:hash_id] %></p>
+                <h4 class="mb-1"> <%= assigns[:resume][:title] %></h4>
+                <p class="text-muted mb-1"><%= assigns[:resume][:subtitle] %></p>
+                <div class="text-muted">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="d-flex align-items-start mt-3">
+                                <div class="me-2 align-self-center">
+                                    <i class="ri-hashtag h2 m-0 text-muted"></i>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="d-flex align-items-start mt-3">
-                                    <div class="me-2 align-self-center">
-                                      <.name_user text={assigns[:resume][:name_assign]} />
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <p class="mb-1"><%= assigns[:resume][:title_assign] %></p>
-                                        <h5 class="mt-0 text-truncate">
-                                        <%= assigns[:resume][:name_assign] %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="d-flex align-items-start mt-3">
-                                    <div class="me-2 align-self-center">
-                                        <i class="ri-calendar-event-line h2 m-0 text-muted"></i>
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                      <p class="mb-1"><%= assigns[:resume][:title_date] %></p>
-                                      <h5 class="mt-0 text-truncate">
-                                      <%= assigns[:resume][:date] %>
-                                      </h5>
-                                    </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="mb-1"><%= assigns[:resume][:title_id] %></p>
+                                    <h5 class="mt-0 text-truncate">
+                                        <%= assigns[:resume][:hash_id] %>
+                                    </h5>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="d-flex align-items-start mt-3">
+                                <div class="me-2 align-self-center">
+                                  <.name_user text={assigns[:resume][:name_assign]} />
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="mb-1"><%= assigns[:resume][:title_assign] %></p>
+                                    <h5 class="mt-0 text-truncate">
+                                    <%= assigns[:resume][:name_assign] %>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="d-flex align-items-start mt-3">
+                                <div class="me-2 align-self-center">
+                                    <i class="ri-calendar-event-line h2 m-0 text-muted"></i>
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                  <p class="mb-1"><%= assigns[:resume][:title_date] %></p>
+                                  <h5 class="mt-0 text-truncate">
+                                  <%= assigns[:resume][:date] %>
+                                  </h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="mt-4">
+                  <div>
+                    <h5> <%= assigns[:resume][:title_description] %> :</h5>
+                    <p class="text-muted">
+                      <%= assigns[:resume][:description] %>
+                    </p>
+                    <div class="mt-3">
+                      <h5><%= assigns[:resume][:title_tags] %> :</h5>
+                      <div>
+                      <%= for tag <- assigns[:resume][:tags] do %>
+                        <%= live_patch tag[:tilte] || "#title", to: tag[:to], class: "badge badge-soft-#{tag[:color] || "primary"} p-1 m-1 #{tag[:class]}" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                  <h5 class="d-flex"><span class="flex-1"><%= assigns[:resume][:title_checklists] %> </span> <button class="btn btn-sm btn-success">+ Añadir lista de tareas</button></h5>
+                  </div>
+                  <%= for tag <- assigns[:resume][:checklists] do %>
 
                     <div class="mt-4">
-                      <div>
-                        <h5> <%= assigns[:resume][:title_description] %> :</h5>
-                        <p class="text-muted">
-                          <%= assigns[:resume][:description] %>
-                        </p>
-                        <div class="mt-3">
-                          <h5><%= assigns[:resume][:title_tags] %> :</h5>
+                      <h5><%= tag[:title] %></h5>
+
+                      <%= for item <- tag[:list] do %>
+
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="checkbox" id="checklistcheck01"
+                            checked={ if item[:checked] == "true" do "checked" else "false" end } />
+                            <label class="form-check-label strikethrough" for="checklistcheck01">
+                            <%= item[:title] %>
+                            </label>
+                        </div>
+                        <% end %>
+                      <!-- end sub tasks/checklists -->
+                    </div>
+                  <% end %>
+
+                </div>
+            </div>
+          </div>
+          <div class="card d-none">
+              <div class="card-body p-2">
+                  <div class="dropdown float-end">
+                      <a href="#" class="dropdown-toggle arrow-none text-muted"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class='mdi mdi-dots-horizontal font-18'></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end">
+                          <!-- item-->
+                          <a href="javascript:void(0);" class="dropdown-item">
+                              <i class='mdi mdi-attachment me-1'></i>Attachment
+                          </a>
+                          <!-- item-->
+                          <a href="javascript:void(0);" class="dropdown-item">
+                              <i class='mdi mdi-pencil-outline me-1'></i>Edit
+                          </a>
+                          <!-- item-->
+                          <a href="javascript:void(0);" class="dropdown-item">
+                              <i class='mdi mdi-content-copy me-1'></i>Mark as Duplicate
+                          </a>
+                          <div class="dropdown-divider"></div>
+                          <!-- item-->
+                          <a href="javascript:void(0);" class="dropdown-item text-danger">
+                              <i class='mdi mdi-delete-outline me-1'></i>Delete
+                          </a>
+                      </div> <!-- end dropdown menu-->
+                  </div> <!-- end dropdown-->
+                  <h5 class="header-title mb-3">Attachments</h5>
+
+                  <div class="row">
+                      <div class="col-md-6">
                           <div>
-                          <%= for tag <- assigns[:resume][:tags] do %>
-                            <%= live_patch tag[:tilte] || "#title", to: tag[:to], class: "badge badge-soft-#{tag[:color] || "primary"} p-1 m-1 #{tag[:class]}" %>
-                            <% end %>
+                              <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                  data-upload-preview-template="#uploadPreviewTemplate">
+                                  <div class="fallback">
+                                      <input name="file" type="file" />
+                                  </div>
+
+                                  <div class="dz-message needsclick">
+                                      <i class="h2 text-muted ri-upload-2-line d-inline-block"></i>
+                                      <h4>Drop files here or click to upload.</h4>
+                                  </div>
+                              </form>
                           </div>
-                        </div>
                       </div>
 
-                      <div class="mt-4">
-                      <h5 class="d-flex"><span class="flex-1"><%= assigns[:resume][:title_checklists] %> </span> <button class="btn btn-sm btn-success">+ Añadir lista de tareas</button></h5>
+                      <div class="col-sm-6">
+                          <div class="mt-4 mt-md-0">
+                              <div class="card border mb-2">
+                                  <div class="p-2">
+                                      <div class="row align-items-center">
+                                          <div class="col-auto">
+                                              <div class="avatar-sm">
+                                                  <span class="avatar-title badge-soft-primary text-primary rounded">
+                                                      ZIP
+                                                  </span>
+                                              </div>
+                                          </div>
+                                          <div class="col ps-0">
+                                              <a href="javascript:void(0);" class="text-muted fw-semibold">Minton-sketch-design.zip</a>
+                                              <p class="mb-0 font-12">2.3 MB</p>
+                                          </div>
+                                          <div class="col-auto">
+                                              <!-- Button -->
+                                              <a href="javascript:void(0);" class="btn btn-link font-16 text-muted">
+                                                  <i class="ri-download-2-line"></i>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="card border mb-0">
+                                  <div class="p-2">
+                                      <div class="row align-items-center">
+                                          <div class="col-auto">
+                                              <div class="avatar-sm">
+                                                  <span class="avatar-title bg-secondary rounded text-light">
+                                                      .MP4
+                                                  </span>
+                                              </div>
+                                          </div>
+                                          <div class="col ps-0">
+                                              <a href="javascript:void(0);" class="text-muted fw-semibold">Admin-bug-report.mp4</a>
+                                              <p class="mb-0 font-12">7.05 MB</p>
+                                          </div>
+                                          <div class="col-auto">
+                                              <!-- Button -->
+                                              <a href="javascript:void(0);" class="btn btn-link font-16 text-muted">
+                                                  <i class="ri-download-2-line"></i>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <!-- Preview -->
+                              <div class="dropzone-previews mt-2" id="file-previews"></div>
+
+                          </div>
                       </div>
-                      <%= for tag <- assigns[:resume][:checklists] do %>
-
-                        <div class="mt-4">
-                          <h5><%= tag[:title] %></h5>
-
-                          <%= for item <- tag[:list] do %>
-
-                            <div class="form-check mt-1">
-                                <input class="form-check-input" type="checkbox" id="checklistcheck01"
-                                checked={ if item[:checked] == "true" do "checked" else "false" end } />
-                                <label class="form-check-label strikethrough" for="checklistcheck01">
-                                <%= item[:title] %>
-                                </label>
-                            </div>
-                            <% end %>
-                          <!-- end sub tasks/checklists -->
-                        </div>
-                      <% end %>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="card d-none">
-                <div class="card-body p-2">
-                    <div class="dropdown float-end">
-                        <a href="#" class="dropdown-toggle arrow-none text-muted"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class='mdi mdi-dots-horizontal font-18'></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class='mdi mdi-attachment me-1'></i>Attachment
-                            </a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class='mdi mdi-pencil-outline me-1'></i>Edit
-                            </a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class='mdi mdi-content-copy me-1'></i>Mark as Duplicate
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item text-danger">
-                                <i class='mdi mdi-delete-outline me-1'></i>Delete
-                            </a>
-                        </div> <!-- end dropdown menu-->
-                    </div> <!-- end dropdown-->
-                    <h5 class="header-title mb-3">Attachments</h5>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div>
-                                <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
-                                    data-upload-preview-template="#uploadPreviewTemplate">
-                                    <div class="fallback">
-                                        <input name="file" type="file" />
-                                    </div>
-
-                                    <div class="dz-message needsclick">
-                                        <i class="h2 text-muted ri-upload-2-line d-inline-block"></i>
-                                        <h4>Drop files here or click to upload.</h4>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="mt-4 mt-md-0">
-                                <div class="card border mb-2">
-                                    <div class="p-2">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="avatar-sm">
-                                                    <span class="avatar-title badge-soft-primary text-primary rounded">
-                                                        ZIP
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <a href="javascript:void(0);" class="text-muted fw-semibold">Minton-sketch-design.zip</a>
-                                                <p class="mb-0 font-12">2.3 MB</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <!-- Button -->
-                                                <a href="javascript:void(0);" class="btn btn-link font-16 text-muted">
-                                                    <i class="ri-download-2-line"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border mb-0">
-                                    <div class="p-2">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="avatar-sm">
-                                                    <span class="avatar-title bg-secondary rounded text-light">
-                                                        .MP4
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <a href="javascript:void(0);" class="text-muted fw-semibold">Admin-bug-report.mp4</a>
-                                                <p class="mb-0 font-12">7.05 MB</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <!-- Button -->
-                                                <a href="javascript:void(0);" class="btn btn-link font-16 text-muted">
-                                                    <i class="ri-download-2-line"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Preview -->
-                                <div class="dropzone-previews mt-2" id="file-previews"></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  </div>
+              </div>
+          </div>
         </div>
 
         <div class="col-xl-4">
-            <div class="card">
-                <div class="card-body px-2 pt-3">
-                    <.dropdown
-                      class="float-end"
-                      class_button="btn-sm float-end ms-2 btn-outline-secondary"
-                      class_dropdown=""
-                      options={assigns[:resume][:filters_comments]}
-                    >
-                      <%= assigns[:resume][:title_filters_comments] %>
-                      <.icons_caret_down_fill class="float-end pt-1 ms-1" />
-                    </.dropdown>
-                    <!-- end dropdown-->
+          <div class="card">
+            <div class="card-body px-2 pt-3">
+              <.dropdown
+                class="float-end"
+                class_button="btn-sm float-end ms-2 btn-outline-secondary"
+                class_dropdown=""
+                options={assigns[:resume][:filters_comments]}
+              >
+                <%= assigns[:resume][:title_filters_comments] %>
+                <.icons_caret_down_fill class="float-end pt-1 ms-1" />
+              </.dropdown>
+              <!-- end dropdown-->
 
-                    <h4 class="mb-4 mt-0 font-16">
-                      <%= assigns[:resume][:title_comments] %>
-                    </h4>
+              <h4 class="mb-4 mt-0 font-16">
+                <%= assigns[:resume][:title_comments] %>
+              </h4>
 
-                    <div class="clerfix"></div>
+              <div class="clerfix"></div>
 
 
-                    <%= for item <- assigns[:resume][:commnents]  do %>
+              <%= for item <- assigns[:resume][:commnents]  do %>
 
-                      <div class="d-flex align-items-start mt-3">
-                        <.name_user text="BK" class="me-2" />
-                          <div class="flex-1">
-                              <h5 class="mt-0"> <%= item[:user] %> <small class="text-muted fw-normal float-end"> <%= item[:date] %> </small></h5>
-                              <%= item[:text] %>
+                <div class="d-flex align-items-start mt-3">
+                  <.name_user text="BK" class="me-2" />
+                    <div class="flex-1">
+                      <h5 class="mt-0"> <%= item[:user] %> <small class="text-muted fw-normal float-end"> <%= item[:date] %> </small></h5>
+                      <%= item[:text] %>
 
-                          </div>
                     </div>
-                    <% end %>
+              </div>
+              <% end %>
 
-                    <div class="text-center mt-2">
-                        <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-spin mdi-loading me-1"></i> Cargar más...</a>
+              <div class="text-center mt-2">
+                <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-spin mdi-loading me-1"></i> Cargar más...</a>
+              </div>
+
+              <div class="border rounded mt-4">
+                <form action="#" class="comment-area-box">
+                  <textarea rows="3" class="form-control border-0 resize-none" placeholder="Escribe un comentario..."></textarea>
+                  <div class="p-2 bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                      <a href="#" class="btn btn-sm px-1 btn-light"><i class='mdi mdi-upload'></i></a>
+                      <a href="#" class="btn btn-sm px-1 btn-light"><i class='mdi mdi-at'></i></a>
                     </div>
-
-                    <div class="border rounded mt-4">
-                        <form action="#" class="comment-area-box">
-                            <textarea rows="3" class="form-control border-0 resize-none" placeholder="Escribe un comentario..."></textarea>
-                            <div class="p-2 bg-light d-flex justify-content-between align-items-center">
-                                <div>
-                                    <a href="#" class="btn btn-sm px-1 btn-light"><i class='mdi mdi-upload'></i></a>
-                                    <a href="#" class="btn btn-sm px-1 btn-light"><i class='mdi mdi-at'></i></a>
-                                </div>
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fe-send me-1"></i>Enviar</button>
-                            </div>
-                        </form>
-                    </div> <!-- end .border-->
-
-                </div> <!-- end card-body-->
-            </div>
-            <!-- end card-->
+                    <button type="submit" class="btn btn-sm btn-success"><i class="fe-send me-1"></i>Enviar</button>
+                  </div>
+                </form>
+              </div> <!-- end .border-->
+            </div> <!-- end card-body-->
+          </div>
+          <!-- end card-->
         </div>
-    </div>
-    <!-- end row -->
+      </div>
+      <!-- end row -->
 
     """
     end
 
+
+  @doc """
+
+
+  ## Examples
+
+  <.ticket_details
+  color="alert"
+
+  >
+  </.ticket_details>
+
+
+    """
+    def ticket_custom(assigns) do
+      ~H"""
+        <.resume_top_elemnts {assigns} />
+        <.tab_select tab={assigns.tabs} />
+        <div class="row bg-white pt-2 pb-5">
+          <div class="col">
+            <%= render_slot(@inner_block) %>
+          </div>
+        </div>
+       """
+    end
+
+  @doc """
+
+
+  ## Examples
+
+  <.ticket_details
+  color="alert"
+
+  >
+  </.ticket_details>
+
+
+    """
+    def ticket_activity(assigns) do
+      ~H"""
+        <.resume_top_elemnts {assigns} />
+        <.tab_select tab={assigns.tabs} />
+        <div class="row bg-white pt-4">
+          <div class="col">
+            <div class="row">
+              <div class="col-12">
+                <div class="timeline" dir="ltr">
+
+                  <article class="timeline-item">
+                      <h2 class="m-0 d-none">&nbsp;</h2>
+                      <div class="time-show mt-0">
+                          <a href="#" class="btn btn-primary width-lg">Última actividad</a>
+                      </div>
+                  </article>
+                  <%= for item <- assigns.list do %>
+
+                    <article class={"timeline-item #{if item[:left]  do "timeline-item-left" end }"}>
+                        <div class="timeline-desk">
+                            <div class="timeline-box">
+                                <span class="arrow-alt"></span>
+                                <span class="timeline-icon"><i class="mdi mdi-adjust"></i></span>
+                                <h4 class="mt-0 font-16"> <%= item[:time] %></h4>
+                                <p class="text-muted"><small><%= item[:hour] %></small></p>
+                                <p class="mb-0"><%= item[:description] %> </p>
+                            </div>
+                        </div>
+                    </article>
+                  <% end %>
+
+
+                  <article class="timeline-item">
+                      <h2 class="m-0 d-none">&nbsp;</h2>
+                      <div class="time-show">
+                          <a href="#" class="btn btn-primary width-lg" >Fin</a>
+                      </div>
+                  </article>
+
+                </div>
+                <!-- end timeline -->
+              </div> <!-- end col -->
+          </div>
+      <!-- end row -->
+          </div>
+        </div>
+       """
+    end
 end
