@@ -146,6 +146,22 @@ defmodule KajoolyTemplateBetaWeb.TicketsLive.Config do
           %{ title: "Detalles", to: Routes.tickets_show_path(socket, :show) },
           %{ title: "ID-TPK-4321", to: nil }
         ],
+
+        tabs: [
+          %{
+            title: "Resumen",
+            to: Routes.tickets_show_path(socket, :show),
+            selected: "true"
+          },
+          %{
+            title: "Detalles Ticket",
+            to: Routes.tickets_custom_path(socket, :show)
+          },
+          %{
+            title: "Actividad",
+            to: Routes.tickets_activity_path(socket, :show)
+          }
+        ],
       txt_title: "Ticket #ID-TPK-4321",
       txt_subtitle: "En diseño",
       to_index: Routes.tickets_index_path(socket, :index),
@@ -269,6 +285,99 @@ defmodule KajoolyTemplateBetaWeb.TicketsLive.Config do
       }
 
     }
+  end
+
+  def custom_config(socket, data) do
+    %{
+      txt_breadcrum_title: "Tickets",
+      breadcrum_pages: [
+          %{ title: "Tickets", to: Routes.tickets_index_path(socket, :index) },
+          %{ title: "Listado de tickets", to: Routes.tickets_index_path(socket, :index) },
+          %{ title: "Detalles", to: Routes.tickets_show_path(socket, :show) },
+          %{ title: "ID-TPK-4321", to: nil }
+        ],
+
+        tabs: [
+          %{
+            title: "Resumen",
+            to: Routes.tickets_show_path(socket, :show)
+          },
+          %{
+            title: "Detalles Ticket",
+            to: Routes.tickets_custom_path(socket, :show),
+            selected: "true"
+          },
+          %{
+            title: "Actividad",
+            to: Routes.tickets_activity_path(socket, :show),
+
+          }
+        ],
+      txt_title: "Ticket #ID-TPK-4321",
+      txt_subtitle: "En diseño",
+      to_index: Routes.tickets_index_path(socket, :index),
+      to_this:  Routes.tickets_show_path(socket, :show)
+    }
+  end
+
+  def activity_config(socket, data) do
+    %{
+      txt_breadcrum_title: "Tickets",
+      breadcrum_pages: [
+          %{ title: "Tickets", to: Routes.tickets_index_path(socket, :index) },
+          %{ title: "Listado de tickets", to: Routes.tickets_index_path(socket, :index) },
+          %{ title: "Detalles", to: Routes.tickets_show_path(socket, :show) },
+          %{ title: "ID-TPK-4321", to: nil }
+        ],
+
+        tabs: [
+          %{
+            title: "Resumen",
+            to: Routes.tickets_show_path(socket, :show),
+          },
+          %{
+            title: "Detalles Ticket",
+            to: Routes.tickets_custom_path(socket, :show),
+          },
+          %{
+            title: "Actividad",
+            to: Routes.tickets_activity_path(socket, :show),
+            selected: "true"
+          }
+        ],
+      txt_title: "Ticket #ID-TPK-4321",
+      txt_subtitle: "En diseño",
+      to_index: Routes.tickets_index_path(socket, :index),
+      to_this:  Routes.tickets_show_path(socket, :show) ,
+      list: list_activity( socket, [
+        %{
+          left: true,
+          time: "Hace 1 hora",
+          hour: "08:23 am",
+          description: "Dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?"
+         },
+         %{
+          left: nil,
+          time: "Hace 2 hora",
+          hour: "08:23 am",
+          description: "consectetur adipisicing elit. Iusto, optio, dolorum John deon provident rerum aut hic quasi placeat iure tempora laudantium ?"
+         }
+      ])
+
+    }
+  end
+
+
+  def list_activity(socket, list) do
+    # IO.inspect list, label: "list"
+     Enum.map(list, fn item ->
+       %{
+         left: item[:left] || false,
+         time: item[:time] || "time",
+         hour: item[:hour] || "hour",
+         description: item[:description] || "description",
+        }
+    end)
   end
 
 end
